@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  homebridge:
+    image: oznu/homebridge:latest
+    restart: always
+    networks:
+      - hostnetwork
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
+    volumes:
+      - /home/pi/homebridge:/homebridge
+networks:
+  hostnetwork:
+    external:
+      name: "host"
